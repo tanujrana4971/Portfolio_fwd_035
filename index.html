@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanuj Rana | Internships</title>
+    <title>Tanuj Rana | Premium Portfolio</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +30,22 @@
                         teal: '#64ffda',
                         purple: '#b392f0',
                     },
+                    animation: {
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                        'spin-slow': 'spin 4s linear infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        }
+                    }
                 }
             }
         }
@@ -38,14 +54,14 @@
     <style>
         /* Base & Reset */
         body {
-            background-color: #050b14;
+            background-color: #050b14; /* Deep space dark */
             color: #a8b2d1;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            cursor: none;
+            cursor: none; /* Hide default cursor */
         }
 
-        /* 1. Custom Cursor */
+        /* 1. Custom Cursor (Enhanced) */
         .cursor-dot, .cursor-ring {
             position: fixed;
             top: 0; left: 0;
@@ -99,7 +115,7 @@
         .glow-card {
             position: relative;
             border-radius: 1rem;
-            padding: 2px;
+            padding: 2px; /* Space for the border */
             overflow: hidden;
             z-index: 1;
         }
@@ -114,8 +130,8 @@
         .glow-card::after {
             content: "";
             position: absolute;
-            inset: 2px;
-            background: rgba(10, 20, 38, 0.9);
+            inset: 2px; /* Thickness of glow border */
+            background: rgba(10, 20, 38, 0.9); /* Inner color */
             backdrop-filter: blur(10px);
             border-radius: calc(1rem - 2px);
             z-index: -1;
@@ -146,6 +162,25 @@
             transform: translateY(0);
         }
 
+        /* Typewriter Cursor Blink */
+        .cursor-blink {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: #64ffda;
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
+            margin-left: 2px;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        /* Skill Bars Transition */
+        .skill-bar {
+            transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #050b14; }
@@ -163,36 +198,271 @@
     <div class="cursor-ring hidden md:block"></div>
 
     <!-- Main Container -->
-    <div class="max-w-4xl mx-auto px-6 py-12 md:py-24 relative z-10 flex flex-col gap-16">
+    <div class="max-w-5xl mx-auto px-6 py-12 md:py-24 relative z-10 flex flex-col gap-20">
         
-        <!-- Navigation / Back Button -->
-        <nav class="reveal active flex justify-between items-center mb-4">
-            <a href="index.html" class="interactive-el glass-panel px-6 py-3 flex items-center gap-3 text-teal hover:text-white transition-colors duration-300 group !rounded-full">
-                <i class="fas fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
-                <span class="font-mono text-sm">Back to Portfolio</span>
-            </a>
-        </nav>
-
-        <!-- Header -->
-        <header class="reveal active">
-            <h1 class="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-teal to-purple w-fit">
-                Professional Experience
+        <!-- 1. HERO SECTION -->
+        <header class="glass-panel p-8 md:p-14 reveal active mt-10">
+            <h2 class="text-teal font-mono mb-4 md:mb-6">Hi, my name is</h2>
+            <h1 class="font-display text-5xl sm:text-7xl font-bold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-teal via-purple to-teal animate-gradient-x w-fit">
+                Tanuj Rana.
             </h1>
-            <p class="text-lg text-slate leading-relaxed">
-                A detailed timeline of my industry internships, highlighting my journey through full-stack architecture, python automation, and premium UI/UX frontend engineering.
+            <div class="h-10 sm:h-12 mb-6">
+                <span id="typewriter-output" class="text-xl sm:text-3xl font-medium tracking-tight text-white"></span><span class="cursor-blink"></span>
+            </div>
+            
+            <p class="max-w-2xl text-lg text-slate leading-relaxed mb-10">
+                I am a multitasking individual with a deep passion for problem-solving and technology. I apply an analytical, first-principles approach to everything from mastering C pointers to designing sophisticated full-stack web architecture.
             </p>
+
+            <div class="flex items-center gap-6">
+                <a href="#projects" class="interactive-el px-8 py-4 border border-teal text-teal font-mono rounded-lg hover:bg-teal/10 transition-colors duration-300">
+                    Check out my work
+                </a>
+                <div class="flex gap-4">
+                    <a href="https://github.com/tanujrana4971/fwd035" target="_blank" class="interactive-el text-slate hover:text-white transition-colors text-2xl"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/tanuj-rana-23a22a436" target="_blank" class="interactive-el text-slate hover:text-teal transition-colors text-2xl"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
         </header>
 
-        <!-- INTERNSHIPS LIST -->
-        <div class="flex flex-col gap-12">
-            
-            <!-- Internship 1: Full Stack -->
-            <section class="reveal">
+        <!-- 2. ABOUT ME SECTION -->
+        <section id="about" class="reveal">
+            <h2 class="flex items-center font-display text-2xl sm:text-3xl text-white mb-10">
+                <span class="text-teal font-mono text-xl mr-3">01.</span> About Me
+                <div class="ml-6 h-[1px] w-full max-w-xs bg-slate/30"></div>
+            </h2>
+
+            <div class="glass-panel p-8 md:p-12 text-slate leading-relaxed space-y-6 text-lg">
+                <p>
+                    Hello! My name is Tanuj Rana. My journey in technology and academics has been driven by a relentless curiosity and a deep-seated desire to solve complex problems from first principles. Originally hailing from Uttarakhand, where I completed my schooling at Saraswati Vidhya Mandir Inter College Awas Vikas, I developed an early appreciation for analytical thinking.
+                </p>
+                <p>
+                    My academic path took an interesting turn when I pursued a B.Sc. in Mathematics, Physics, and Chemistry for a year. This period rigorously trained my mind in linear algebra, discrete mathematics, and abstract logic. However, my true passion lay in building and programming. This realization led me to transition into the B.Tech Computer Science & Engineering program at South Asian University, New Delhi, where I am currently in my first year.
+                </p>
+                <p>
+                    Today, I balance my time between mastering low-level concepts in C programming, developing robust full-stack web applications with PHP, MySQL, and modern JavaScript, and continuously refining my UI/UX design sensibilities. I pride myself on being a multifaceted individual—when I'm not debugging memory leaks or designing glassmorphism interfaces, you can find me writing poetry or playing cricket, finding inspiration and discipline in both art and sport.
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. EDUCATION SECTION -->
+        <section id="education" class="reveal">
+            <h2 class="flex items-center font-display text-2xl sm:text-3xl text-white mb-10">
+                <span class="text-teal font-mono text-xl mr-3">02.</span> Education Journey
+                <div class="ml-6 h-[1px] w-full max-w-xs bg-slate/30"></div>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glow-card tilt-card interactive-el">
+                    <div class="glow-content p-6 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fas fa-graduation-cap text-3xl text-teal"></i>
+                                <span class="text-xs font-mono text-teal bg-teal/10 px-2 py-1 rounded">Present</span>
+                            </div>
+                            <h3 class="text-white font-bold text-lg mb-2">B.Tech Computer Science & Engineering</h3>
+                            <p class="text-sm text-slate mb-4">South Asian University, New Delhi</p>
+                            <p class="text-xs text-slate/80 leading-relaxed">Currently in my 1st year, diving deep into core computer science concepts. Focusing heavily on C programming, web development architectures, Python, and mastering algorithmic logic.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glow-card tilt-card interactive-el">
+                    <div class="glow-content p-6 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fas fa-square-root-variable text-3xl text-purple"></i>
+                                <span class="text-xs font-mono text-slate bg-slate/10 px-2 py-1 rounded">1 Yr Completed</span>
+                            </div>
+                            <h3 class="text-white font-bold text-lg mb-2">B.Sc. Mathematics, Physics, Chemistry</h3>
+                            <p class="text-sm text-slate mb-4">Pt. Lalit Mohan Sharma Campus, Rishikesh</p>
+                            <p class="text-xs text-slate/80 leading-relaxed">Built a formidable foundation in abstract problem solving, linear algebra, and discrete mathematics, which directly enhances my computational thinking today.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glow-card tilt-card interactive-el">
+                    <div class="glow-content p-6 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fas fa-school text-3xl text-blue-400"></i>
+                                <span class="text-xs font-mono text-slate bg-slate/10 px-2 py-1 rounded">Class 12</span>
+                            </div>
+                            <h3 class="text-white font-bold text-lg mb-2">Intermediate</h3>
+                            <p class="text-sm text-slate mb-4">Saraswati Vidhya Mandir Inter College Awas Vikas, Uttarakhand</p>
+                            <p class="text-xs text-slate/80 leading-relaxed">Completed foundational studies with a strong emphasis on sciences and mathematics, nurturing an early passion for technology and continuous learning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SKILLS SECTION -->
+        <section id="skills" class="reveal">
+            <h2 class="flex items-center font-display text-2xl sm:text-3xl text-white mb-10">
+                <span class="text-teal font-mono text-xl mr-3">03.</span> Technical Arsenal
+                <div class="ml-6 h-[1px] w-full max-w-xs bg-slate/30"></div>
+            </h2>
+
+            <div class="glass-panel p-8 md:p-12 flex flex-col md:flex-row gap-12">
+                <!-- Left: Tags -->
+                <div class="md:w-1/3">
+                    <h3 class="text-white font-medium mb-6 text-lg">Core Technologies</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-full border border-teal/30 bg-teal/5 text-teal text-sm shadow-[0_0_10px_rgba(100,255,218,0.2)]">C Programming</span>
+                        <span class="px-4 py-2 rounded-full border border-purple/30 bg-purple/5 text-purple text-sm shadow-[0_0_10px_rgba(179,146,240,0.2)]">Python</span>
+                        <span class="px-4 py-2 rounded-full border border-blue-400/30 bg-blue-400/5 text-blue-400 text-sm shadow-[0_0_10px_rgba(96,165,250,0.2)]">HTML/CSS</span>
+                        <span class="px-4 py-2 rounded-full border border-yellow-400/30 bg-yellow-400/5 text-yellow-400 text-sm shadow-[0_0_10px_rgba(250,204,21,0.2)]">JavaScript</span>
+                        <span class="px-4 py-2 rounded-full border border-indigo-400/30 bg-indigo-400/5 text-indigo-400 text-sm shadow-[0_0_10px_rgba(129,140,248,0.2)]">PHP</span>
+                        <span class="px-4 py-2 rounded-full border border-teal/30 bg-teal/5 text-teal text-sm shadow-[0_0_10px_rgba(100,255,218,0.2)]">MySQL</span>
+                        <span class="px-4 py-2 rounded-full border border-pink-400/30 bg-pink-400/5 text-pink-400 text-sm shadow-[0_0_10px_rgba(244,114,182,0.2)]">Linear Algebra</span>
+                        <span class="px-4 py-2 rounded-full border border-green-400/30 bg-green-400/5 text-green-400 text-sm shadow-[0_0_10px_rgba(74,222,128,0.2)]">UI/UX Design</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glow-card tilt-card interactive-el">
+                    <div class="glow-content p-6 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fas fa-square-root-variable text-3xl text-purple"></i>
+                                <span class="text-xs font-mono text-slate bg-slate/10 px-2 py-1 rounded">2025 - 2026</span>
+                            </div>
+                            <h3 class="text-white font-bold text-lg mb-2">B.Sc Mathematics <br><span class="text-sm font-normal text-slate">(1 Year Completed)</span></h3>
+                            <p class="text-sm text-slate">Pt. Lalit Mohan Sharma Campus, Rishikesh</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glow-card tilt-card interactive-el">
+                    <div class="glow-content p-6 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fas fa-school text-3xl text-blue-400"></i>
+                                <span class="text-xs font-mono text-slate bg-slate/10 px-2 py-1 rounded">2025</span>
+                            </div>
+                            <h3 class="text-white font-bold text-lg mb-2">Intermediate (Class 12)</h3>
+                            <p class="text-sm text-slate">Saraswati Vidhya Mandir Inter College Awas Vikas, Uttarakhand</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SKILLS SECTION -->
+        <section id="skills" class="reveal">
+            <h2 class="flex items-center font-display text-2xl sm:text-3xl text-white mb-10">
+                <span class="text-teal font-mono text-xl mr-3">02.</span> Technical Arsenal
+                <div class="ml-6 h-[1px] w-full max-w-xs bg-slate/30"></div>
+            </h2>
+
+            <div class="glass-panel p-8 md:p-12 flex flex-col md:flex-row gap-12">
+                <!-- Left: Tags -->
+                <div class="md:w-1/3">
+                    <h3 class="text-white font-medium mb-6 text-lg">Core Technologies</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-full border border-teal/30 bg-teal/5 text-teal text-sm shadow-[0_0_10px_rgba(100,255,218,0.2)]">C Programming</span>
+                        <span class="px-4 py-2 rounded-full border border-purple/30 bg-purple/5 text-purple text-sm shadow-[0_0_10px_rgba(179,146,240,0.2)]">Python</span>
+                        <span class="px-4 py-2 rounded-full border border-blue-400/30 bg-blue-400/5 text-blue-400 text-sm shadow-[0_0_10px_rgba(96,165,250,0.2)]">HTML/CSS</span>
+                        <span class="px-4 py-2 rounded-full border border-yellow-400/30 bg-yellow-400/5 text-yellow-400 text-sm shadow-[0_0_10px_rgba(250,204,21,0.2)]">JavaScript</span>
+                        <span class="px-4 py-2 rounded-full border border-indigo-400/30 bg-indigo-400/5 text-indigo-400 text-sm shadow-[0_0_10px_rgba(129,140,248,0.2)]">PHP</span>
+                        <span class="px-4 py-2 rounded-full border border-teal/30 bg-teal/5 text-teal text-sm shadow-[0_0_10px_rgba(100,255,218,0.2)]">MySQL</span>
+                        <span class="px-4 py-2 rounded-full border border-pink-400/30 bg-pink-400/5 text-pink-400 text-sm shadow-[0_0_10px_rgba(244,114,182,0.2)]">UI/UX Design</span>
+                    </div>
+                </div>
+
+                <!-- Right: Animated Bars -->
+                <div class="md:w-2/3 space-y-6" id="skill-bars-container">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-medium text-white">Low-Level & Logic (C / Math)</span>
+                            <span class="text-sm font-mono text-teal">95%</span>
+                        </div>
+                        <div class="w-full bg-slate/20 rounded-full h-2 overflow-hidden">
+                            <div class="bg-gradient-to-r from-teal to-purple h-2 rounded-full skill-bar w-0" data-width="95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-medium text-white">Frontend (HTML, CSS, JS, UI/UX)</span>
+                            <span class="text-sm font-mono text-purple">90%</span>
+                        </div>
+                        <div class="w-full bg-slate/20 rounded-full h-2 overflow-hidden">
+                            <div class="bg-gradient-to-r from-purple to-pink-400 h-2 rounded-full skill-bar w-0" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-medium text-white">Backend & Database (PHP, MySQL, Python)</span>
+                            <span class="text-sm font-mono text-blue-400">85%</span>
+                        </div>
+                        <div class="w-full bg-slate/20 rounded-full h-2 overflow-hidden">
+                            <div class="bg-gradient-to-r from-blue-400 to-teal h-2 rounded-full skill-bar w-0" data-width="85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- 5. PROJECTS SECTION -->
+        <section id="projects" class="reveal">
+            <h2 class="flex items-center font-display text-2xl sm:text-3xl text-white mb-10">
+                <span class="text-teal font-mono text-xl mr-3">04.</span> Featured Project
+                <div class="ml-6 h-[1px] w-full max-w-xs bg-slate/30"></div>
+            </h2>
+
+            <div class="glow-card tilt-card interactive-el w-full">
+                <div class="glow-content p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
+                    
+                    <!-- Text Content -->
+                    <div class="md:w-3/5 z-10">
+                        <p class="font-mono text-teal mb-2 text-sm">Full-Stack Academic Platform</p>
+                        <h3 class="text-3xl font-display font-bold text-white mb-6">NoteCred</h3>
+                        <div class="glass-panel p-6 mb-6 !rounded-lg !bg-[#0f172a]/80">
+                            <p class="text-slate text-sm md:text-base leading-relaxed">
+                                A comprehensive peer-to-peer student resource web application. Engineered to democratize education, NoteCred allows students to seamlessly upload, categorize, and securely access high-quality study materials globally. Built from the ground up with a custom UI inspired by modern design systems, it features dynamic databases, intricate file structures, and seamless user interaction.
+                            </p>
+                        </div>
+                        <ul class="flex flex-wrap gap-4 text-xs font-mono text-slate mb-8">
+                            <li>PHP</li>
+                            <li>MySQL</li>
+                            <li>Vanilla JS</li>
+                            <li>HTML/CSS</li>
+                            <li>UI/UX Design</li>
+                        </ul>
+                        <div class="flex gap-6 items-center">
+                            <a href="https://notecred.infinityfree.io/" target="_blank" class="interactive-el px-6 py-3 bg-teal/10 border border-teal text-teal font-mono rounded hover:bg-teal/20 transition-all duration-300 shadow-[0_0_15px_rgba(100,255,218,0.3)]">
+                                <i class="fas fa-external-link-alt mr-2"></i> Visit NoteCred
+                            </a>
+                            <a href="https://github.com/tanujrana4971/fwd035" target="_blank" class="text-white hover:text-teal transition-colors text-2xl"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Abstract Visual Representation (Instead of missing image) -->
+                    <div class="md:w-2/5 w-full h-64 rounded-xl border border-white/10 bg-gradient-to-br from-teal/10 to-purple/10 flex items-center justify-center relative overflow-hidden group">
+                        <i class="fas fa-book-open text-6xl text-white/30 group-hover:text-teal/50 transition-colors duration-500 group-hover:scale-110"></i>
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')]"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. INTERNSHIPS SECTION -->
+        <section id="internships" class="reveal">
+            <h2 class="flex items-center font-display text-2xl sm:text-3xl text-white mb-10">
+                <span class="text-teal font-mono text-xl mr-3">05.</span> Professional Experience
+                <div class="ml-6 h-[1px] w-full max-w-xs bg-slate/30"></div>
+            </h2>
+
+            <div class="flex flex-col gap-12">
+                <!-- Internship 1: Backend / Full Stack -->
                 <div class="glow-card tilt-card interactive-el w-full">
                     <div class="glow-content p-8 md:p-12">
                         <div class="flex flex-col md:flex-row gap-4 md:items-center justify-between mb-8">
                             <div>
-                                <h3 class="text-2xl font-display font-bold text-white mb-2">Full Stack Engineering Intern</h3>
+                                <h3 class="text-2xl font-display font-bold text-white mb-2">Backend PHP/MySQL Developer Intern</h3>
                                 <p class="font-mono text-teal text-base"><i class="fas fa-server mr-2"></i>EduShare Network Inc.</p>
                             </div>
                             <span class="px-4 py-2 rounded-full border border-teal/30 bg-teal/5 text-teal text-sm font-mono whitespace-nowrap shadow-[0_0_10px_rgba(100,255,218,0.1)]">Jan 2024 - Jun 2024</span>
@@ -200,33 +470,31 @@
                         
                         <div class="glass-panel p-6 !bg-[#0f172a]/60 text-slate text-base leading-loose mb-8 !rounded-xl">
                             <p class="mb-4">
-                                During this rigorous 6-month internship, I was tasked with architecting the core backend infrastructure for a peer-to-peer educational resource-sharing platform. My primary responsibility involved designing and optimizing complex relational database schemas using MySQL to handle thousands of concurrent read/write operations seamlessly.
+                                During this rigorous 6-month internship, I was tasked with architecting the core backend infrastructure for a peer-to-peer educational resource-sharing platform. My primary responsibility involved designing and optimizing complex relational database schemas using MySQL to handle thousands of concurrent read/write operations seamlessly, significantly improving query response times.
                             </p>
                             <p class="mb-4">
-                                I spearheaded the development of an intricate "upload-to-unlock" credit loop system utilizing PHP. This heavily logic-driven system required complex transaction handling to ensure atomic operations when users exchanged virtual credits for premium study materials, guaranteeing both security and flawless database integrity.
+                                I spearheaded the development of an intricate "upload-to-unlock" credit loop system utilizing PHP. This heavily logic-driven system required complex transaction handling to ensure atomic operations when users exchanged virtual credits for premium study materials. I also built robust RESTful APIs to connect the frontend to the database securely.
                             </p>
                             <p>
-                                Furthermore, I collaborated closely with the product team to engineer a Notion-style block editor from scratch using Vanilla JavaScript. This highly interactive interface allowed users to compose rich-text notes with embedded mathematical formulas and live code snippets. This role significantly sharpened my ability to write secure, scalable backend architecture while keeping the frontend user experience entirely frictionless.
+                                Furthermore, I implemented secure user authentication and authorization protocols to safeguard user data. This role significantly sharpened my ability to write secure, scalable backend architecture while keeping the system highly performant and reliable under load.
                             </p>
                         </div>
 
                         <ul class="flex flex-wrap gap-3 text-xs font-mono text-slate">
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">PHP</li>
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">MySQL</li>
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">Vanilla JS</li>
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">Database Architecture</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">PHP</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">MySQL</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">RESTful APIs</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">Database Optimization</li>
                         </ul>
                     </div>
                 </div>
-            </section>
 
-            <!-- Internship 2: Python Automation -->
-            <section class="reveal">
+                <!-- Internship 2: Python Automation -->
                 <div class="glow-card tilt-card interactive-el w-full">
                     <div class="glow-content p-8 md:p-12">
                         <div class="flex flex-col md:flex-row gap-4 md:items-center justify-between mb-8">
                             <div>
-                                <h3 class="text-2xl font-display font-bold text-white mb-2">Data Automation Intern</h3>
+                                <h3 class="text-2xl font-display font-bold text-white mb-2">Python Automation Engineer Intern</h3>
                                 <p class="font-mono text-purple text-base"><i class="fas fa-robot mr-2"></i>ScrapeTech Solutions</p>
                             </div>
                             <span class="px-4 py-2 rounded-full border border-purple/30 bg-purple/5 text-purple text-sm font-mono whitespace-nowrap shadow-[0_0_10px_rgba(179,146,240,0.1)]">Jul 2023 - Dec 2023</span>
@@ -234,33 +502,31 @@
                         
                         <div class="glass-panel p-6 !bg-[#0f172a]/60 text-slate text-base leading-loose mb-8 !rounded-xl">
                             <p class="mb-4">
-                                As a Data Automation Intern, my focus shifted heavily toward data pipeline engineering and sophisticated process automation. I was responsible for designing, testing, and deploying custom Python-based web scraping bots utilizing libraries such as BeautifulSoup4 and Selenium.
+                                As a Python Automation Engineer Intern, my focus shifted heavily toward data pipeline engineering and sophisticated process automation. I was responsible for designing, testing, and deploying custom Python-based web scraping bots utilizing BeautifulSoup and Requests to gather large datasets efficiently.
                             </p>
                             <p class="mb-4">
-                                These bots were engineered to autonomously navigate complex, heavily paginated e-commerce and academic portals to extract massive structured datasets. I developed custom parsing algorithms to clean, normalize, and sanitize the scraped data, converting highly unstructured HTML DOM elements into highly organized JSON and CSV formats suitable for downstream analytics.
+                                These bots were engineered to autonomously navigate complex academic and e-commerce portals to extract massive structured datasets. I developed custom parsing algorithms to clean, normalize, and sanitize the scraped data, converting highly unstructured HTML DOM elements into organized JSON and CSV formats suitable for downstream analytics.
                             </p>
                             <p>
-                                Beyond scraping, I wrote a series of automation scripts that interacted directly with REST APIs to streamline daily reporting workflows for the operations team. These scripts effectively reduced manual data entry hours by over 70%. This experience provided me with a profound, hands-on understanding of DOM traversal, rate-limiting evasion techniques, and the critical importance of writing robust, error-resistant Python code.
+                                Beyond scraping, I wrote a series of automation scripts that reduced the manual workload for the operations team by over 70%. This experience provided me with a profound, hands-on understanding of automating repetitive tasks, rate-limiting evasion techniques, and the critical importance of writing robust, error-resistant Python code.
                             </p>
                         </div>
 
                         <ul class="flex flex-wrap gap-3 text-xs font-mono text-slate">
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">Python</li>
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">BeautifulSoup4</li>
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">Selenium</li>
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">Data Structuring</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">Python</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">BeautifulSoup</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">Data Pipelines</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">Automation</li>
                         </ul>
                     </div>
                 </div>
-            </section>
 
-            <!-- Internship 3: Frontend UI/UX -->
-            <section class="reveal">
+                <!-- Internship 3: Frontend UI/UX -->
                 <div class="glow-card tilt-card interactive-el w-full">
                     <div class="glow-content p-8 md:p-12">
                         <div class="flex flex-col md:flex-row gap-4 md:items-center justify-between mb-8">
                             <div>
-                                <h3 class="text-2xl font-display font-bold text-white mb-2">Frontend UI/UX Developer</h3>
+                                <h3 class="text-2xl font-display font-bold text-white mb-2">UI/UX Engineering Intern</h3>
                                 <p class="font-mono text-blue-400 text-base"><i class="fas fa-paint-brush mr-2"></i>PixelCraft Agency</p>
                             </div>
                             <span class="px-4 py-2 rounded-full border border-blue-400/30 bg-blue-400/5 text-blue-400 text-sm font-mono whitespace-nowrap shadow-[0_0_10px_rgba(96,165,250,0.1)]">Jan 2023 - Jun 2023</span>
@@ -268,29 +534,29 @@
                         
                         <div class="glass-panel p-6 !bg-[#0f172a]/60 text-slate text-base leading-loose mb-8 !rounded-xl">
                             <p class="mb-4">
-                                Working within a fast-paced creative agency, my role was to translate high-fidelity Figma designs into pixel-perfect, highly interactive web experiences. My primary focus was on pushing the boundaries of modern CSS and Vanilla JavaScript to create fluid, award-winning user interfaces that engaged users instantly.
+                                Working within a fast-paced creative agency, my role was to focus entirely on frontend aesthetics and user experience. I was responsible for designing and implementing sleek, premium dark-mode interfaces utilizing glassmorphism and modern CSS layout techniques.
                             </p>
                             <p class="mb-4">
-                                I extensively utilized glassmorphism, advanced CSS grid layouts, and custom radial gradient tracking to craft premium, tactile interfaces that felt alive. One of my key deliverables included engineering an optimized, hardware-accelerated infinite marquee component that seamlessly handled high-resolution web assets without compromising browser frame rates.
+                                I translated high-fidelity wireframes into fully accessible, pixel-perfect web components using Vanilla JavaScript and Tailwind CSS. A significant part of my workflow involved mapping out smooth user journeys, ensuring intuitive navigation, and rigorously testing interactive elements to provide a frictionless experience across all devices.
                             </p>
                             <p>
-                                I also integrated complex scroll-reveal animations and 3D tilt effects, rigorously studying the math and physics required to make UI elements respond naturally to cursor movements. This role deeply honed my eye for design details, typography, and micro-interactions, ensuring that every web application I build is not only functionally robust but visually breathtaking.
+                                By incorporating subtle scroll-reveal animations and tactile hover effects, I helped increase overall user engagement on client sites. This role deeply honed my eye for design details, accessibility standards, typography, and micro-interactions, proving that a robust backend must be paired with an equally breathtaking frontend.
                             </p>
                         </div>
 
                         <ul class="flex flex-wrap gap-3 text-xs font-mono text-slate">
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">HTML5/CSS3</li>
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">Vanilla JS</li>
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">Tailwind CSS</li>
-                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10">Figma to HTML</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">UI/UX Design</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">Glassmorphism</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">Accessibility</li>
+                            <li class="px-3 py-1 bg-white/5 rounded border border-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">Tailwind CSS</li>
                         </ul>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <!-- Footer -->
-        <footer class="mt-8 mb-8 text-center text-sm font-mono text-slate reveal">
+        <footer class="mt-12 mb-8 text-center text-sm font-mono text-slate reveal">
             <p>Designed & Built by <span class="text-teal">Tanuj Rana</span></p>
             <p class="mt-2 text-xs opacity-60">Engineered with Vanilla JS, Tailwind & Mathematical Precision</p>
         </footer>
@@ -298,8 +564,11 @@
     </div>
 
     <!-- Scripts Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script>
+        // --------------------------------------------------------
         // 1. Cursor & Mouse Tracking Logic
+        // --------------------------------------------------------
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
         const cursorDot = document.querySelector('.cursor-dot');
@@ -314,7 +583,9 @@
 
         const renderCursor = () => {
             if(cursorDot && cursorRing) {
+                // Dot follows exactly
                 cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+                // Ring lerps for smooth trailing
                 ringX += (mouseX - ringX) * 0.15;
                 ringY += (mouseY - ringY) * 0.15;
                 cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
@@ -329,13 +600,32 @@
             el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
         });
 
-        // 2. Particle Star/Constellation Canvas
+        // --------------------------------------------------------
+        // 2. Typewriter Effect
+        // --------------------------------------------------------
+        const typeText = "Developer. Thinker. Problem Solver.";
+        const typeEl = document.getElementById("typewriter-output");
+        let typeIdx = 0;
+        
+        function typeWriter() {
+            if (typeIdx < typeText.length) {
+                typeEl.innerHTML += typeText.charAt(typeIdx);
+                typeIdx++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        // Start typing shortly after load
+        setTimeout(typeWriter, 800);
+
+        // --------------------------------------------------------
+        // 3. Particle Star/Constellation Canvas (Kept as requested)
+        // --------------------------------------------------------
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         const particleCount = 100;
         const connectionDistance = 150;
-        const mouseConnectionDistance = 250;
+        const mouseConnectionDistance = 250; // Increased reach for cursor
 
         const resizeCanvas = () => {
             canvas.width = window.innerWidth;
@@ -348,7 +638,7 @@
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.7;
+                this.vx = (Math.random() - 0.5) * 0.7; // Slightly faster
                 this.vy = (Math.random() - 0.5) * 0.7;
                 this.radius = Math.random() * 1.5 + 0.5;
             }
@@ -361,7 +651,7 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(100, 255, 218, 0.4)';
+                ctx.fillStyle = 'rgba(100, 255, 218, 0.4)'; // Brighter Teal
                 ctx.fill();
             }
         }
@@ -374,6 +664,7 @@
 
         const drawLines = () => {
             for (let i = 0; i < particles.length; i++) {
+                // Particles connecting to each other
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
@@ -384,11 +675,12 @@
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
                         const opacity = 1 - (distance / connectionDistance);
-                        ctx.strokeStyle = `rgba(136, 146, 176, ${opacity * 0.2})`;
+                        ctx.strokeStyle = `rgba(136, 146, 176, ${opacity * 0.2})`; // Slate
                         ctx.stroke();
                     }
                 }
 
+                // Particles connecting to cursor
                 const mouseDx = particles[i].x - mouseX;
                 const mouseDy = particles[i].y - mouseY;
                 const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
@@ -398,9 +690,10 @@
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(mouseX, mouseY);
                     const opacity = 1 - (mouseDistance / mouseConnectionDistance);
-                    ctx.strokeStyle = `rgba(179, 146, 240, ${opacity * 0.4})`;
+                    ctx.strokeStyle = `rgba(179, 146, 240, ${opacity * 0.4})`; // Glowing Purple to mouse
                     ctx.stroke();
                     
+                    // Magnetic effect
                     particles[i].x -= mouseDx * 0.003;
                     particles[i].y -= mouseDy * 0.003;
                 }
@@ -415,40 +708,67 @@
         };
         animateCanvas();
 
-        // 3. 3D Tilt Magic Cards
+        // --------------------------------------------------------
+        // 4. 3D Tilt Magic Cards (Vanilla-tilt integration)
+        // --------------------------------------------------------
         const tiltCards = document.querySelectorAll('.tilt-card');
         
-        tiltCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = ((y - centerY) / centerY) * -4; // Subtle 4deg tilt
-                const rotateY = ((x - centerX) / centerX) * 4;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+        if (typeof VanillaTilt !== 'undefined') {
+            // Apply official vanilla-tilt if CDN successfully loaded
+            VanillaTilt.init(tiltCards, {
+                max: 5,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.05,
+                scale: 1.02
             });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        } else {
+            // Fallback custom logic if CDN is blocked/fails
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -8;
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
             });
-        });
+        }
 
-        // 4. Scroll Reveal
+        // --------------------------------------------------------
+        // 5. Scroll Reveal & Animated Skill Bars Observer
+        // --------------------------------------------------------
         const revealElements = document.querySelectorAll('.reveal');
+        const skillBars = document.querySelectorAll('.skill-bar');
+
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Reveal elements
                     entry.target.classList.add('active');
+                    
+                    // If it's the skills section, animate bars
+                    if(entry.target.id === 'skills') {
+                        skillBars.forEach(bar => {
+                            bar.style.width = bar.getAttribute('data-width');
+                        });
+                    }
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
         revealElements.forEach(el => scrollObserver.observe(el));
+
     </script>
 </body>
 </html>
